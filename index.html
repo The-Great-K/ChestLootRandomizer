@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Chest Loot Randomizer</title>
+        <link rel="stylesheet" href="style/style.css" />
+    </head>
+    <body>
+        <h1>Webpage</h1>
+
+        <form id="typeofchest">
+            <input type="radio" id="chest" name="chesttype" value="StandardChest" />
+            <label for="chest">Standard Chest</label> <br />
+            <input type="radio" id="doublechest" name="chesttype" value="DoubleChest" />
+            <label for="doublechest">Double Chest</label> <br />
+        </form>
+
+        <p id="randomizerinfo">Fill in the chest info first</p>
+
+        <form id="hiddenform1">
+            <label>Item Count Max (Use the arrow keys)</label>
+            <input type="number" id="itemcountmax" name="itemcountmax"
+                   min="0" max="27" onkeypress="return false;" />
+            <label>Item Count Min (Use the arrow keys)</label>
+            <input type="number" id="itemcountmin" name="itemcountmin"
+                   min="0" max="27" onkeypress="return false;" />
+        </form>
+
+        <form id="hiddenform2">
+            <label>Item Count Max (Use the arrow keys)</label>
+            <input type="number" id="itemcountmax" name="itemcountmax"
+                   min="0" max="54" onkeypress="return false;" />
+            <label>Item Count Min (Use the arrow keys)</label>
+            <input type="number" id="itemcountmin" name="itemcountmin"
+                   min="0" max="54" onkeypress="return false;" />
+        </form>
+
+        <script>
+            function checkForChestType() {
+                var e = document.getElementById("randomizerinfo");
+                if (document.getElementById("chest").checked) {
+                    var d = document.createElement("form");
+                    var c = document.getElementById("hiddenform1");
+                    d.innerHTML = c.innerHTML;
+                } else if (document.getElementById("doublechest").checked) {
+                    var d = document.createElement("form");
+                    var c = document.getElementById("hiddenform2");
+                } else {
+                    return false;
+                }
+            }
+
+            setInterval(checkForChestType, 10);
+        </script>
+
+        <script src="scripts/randomizer.js"></script>
+    </body>
+</html>
