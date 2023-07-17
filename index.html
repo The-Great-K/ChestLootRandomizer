@@ -18,24 +18,6 @@
 
         <p id="randomizerinfo">Fill in the chest info first</p>
 
-        <form id="hiddenform1">
-            <label>Item Count Max (Use the arrow keys)</label>
-            <input type="number" id="itemcountmax" name="itemcountmax"
-                   min="0" max="27" onkeypress="return false;" />
-            <label>Item Count Min (Use the arrow keys)</label>
-            <input type="number" id="itemcountmin" name="itemcountmin"
-                   min="0" max="27" onkeypress="return false;" />
-        </form>
-
-        <form id="hiddenform2">
-            <label>Item Count Max (Use the arrow keys)</label>
-            <input type="number" id="itemcountmax" name="itemcountmax"
-                   min="0" max="54" onkeypress="return false;" />
-            <label>Item Count Min (Use the arrow keys)</label>
-            <input type="number" id="itemcountmin" name="itemcountmin"
-                   min="0" max="54" onkeypress="return false;" />
-        </form>
-
         <script>
             function checkForChestType() {
                 var e = document.getElementById("randomizerinfo");
@@ -43,9 +25,12 @@
                     var d = document.createElement("form");
                     var c = document.getElementById("hiddenform1");
                     d.innerHTML = c.innerHTML;
+                    e.parentNode.replaceChild(d, e);
                 } else if (document.getElementById("doublechest").checked) {
                     var d = document.createElement("form");
                     var c = document.getElementById("hiddenform2");
+                    d.innerHTML = c.innerHTML;
+                    e.parentNode.replaceChild(d, e);
                 } else {
                     return false;
                 }
@@ -53,6 +38,26 @@
 
             setInterval(checkForChestType, 10);
         </script>
+        
+        <form id="hiddenform1" style="visibility: hidden">
+            <br />
+            <label>Item Count Max (Use the arrow keys)</label>
+            <input type="number" id="itemcountmax" name="itemcountmax"
+                   min="0" max="27" onkeypress="return false;" />
+            <label>Item Count Min (Use the arrow keys)</label>
+            <input type="number" id="itemcountmin" name="itemcountmin"
+                   min="0" max="27" onkeypress="return false;" />
+        </form>
+
+        <form id="hiddenform2" style="visibility: hidden">
+            <br />
+            <label>Item Count Max (Use the arrow keys)</label>
+            <input type="number" id="itemcountmax" name="itemcountmax"
+                   min="0" max="54" onkeypress="return false;" />
+            <label>Item Count Min (Use the arrow keys)</label>
+            <input type="number" id="itemcountmin" name="itemcountmin"
+                   min="0" max="54" onkeypress="return false;" />
+        </form>
 
         <script src="scripts/randomizer.js"></script>
     </body>
